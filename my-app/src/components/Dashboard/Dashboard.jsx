@@ -1,7 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import UserContext from '../../contexts/UserContext';
 import axios from 'axios'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+
+    const { user } = useContext(UserContext);
+
 
     const [quote, setQuote] = useState({})
 
@@ -21,7 +25,8 @@ const Dashboard = () => {
 
     return (
         <div className="quote-container">
-            <h1 className="quote">{quote.body}</h1>
+            <h1>Welcome {user.username}</h1>
+            <h2 className="quote">{quote.body}</h2>
             <p className="author">~ {quote.author} ~</p>
         </div>
     )

@@ -12,6 +12,7 @@ const Signup = props => {
 		password: '',
 
 	});
+	
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.name]: e.target.value });
@@ -21,12 +22,15 @@ const Signup = props => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		axiosWithAuth()
-			.post('http://localhost:4000/api/login', user)
+			.post('http://localhost:4000/api/auth/login', user)
 			.then(res => {
-				console.log(res);
-				localStorage.setItem('token', res.data.token);
+				// localStorage.setItem('token', res.data.token);
+				console.log(res)
+				localStorage.setItem('user_id', res.data.id);
+
 				const id = res.data.id;
-                props.history.push(`/protected/dashboard/${id}`);
+				(console.log(props.history))
+				props.history.push(`/protected/dashboard/${id}`);
 
 			})
 			.catch(err => console.log('error in login', err));

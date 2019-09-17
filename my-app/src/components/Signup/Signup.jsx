@@ -26,12 +26,12 @@ const Signup = props => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		axiosWithAuth()
-			.post('http://localhost:4000/api/signup', newUser)
+			.post('http://localhost:4000/api/auth/signup', newUser)
 			.then(res => {
 				console.log(res);
-				localStorage.setItem('token', res.data.token);
+				// localStorage.setItem('token', res.data.token);
 				const id = res.data.id;
-                props.history.push(`/protected/dashboard`);
+                props.history.push(`/protected/dashboard/${id}`);
 
 			})
 			.catch(err => console.log('error in signup', err));
