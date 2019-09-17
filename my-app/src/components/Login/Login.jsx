@@ -24,7 +24,7 @@ const Signup = props => {
 		axiosWithAuth()
 			.post('http://localhost:4000/api/auth/login', user)
 			.then(res => {
-				// localStorage.setItem('token', res.data.token);
+				localStorage.setItem('token', res.data.token);
 				console.log(res)
 				localStorage.setItem('user_id', res.data.id);
 
