@@ -1,13 +1,14 @@
   
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import NavLanding from '../Navigation/NavLanding'
 
 const Landing = props => {
 	return (
         <>
         <NavLanding />
-        <div>Welcome to the landing page</div>
+        <div className="landing-container">
+                <h1>Welcome to Inspiration!</h1>
+        </div>
         </>
 
 	)

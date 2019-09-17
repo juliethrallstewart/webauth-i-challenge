@@ -6,6 +6,8 @@ import Login from '../src/components/Login/Login';
 import Signup from '../src/components/Signup/Signup';
 import Landing from '../src/components/Landing/Landing';
 import Dashboard from '../src/components/Dashboard/Dashboard'
+import UserContext from './contexts/UserContext';
+
 
 import './scss/index.scss';
 
@@ -18,9 +20,14 @@ function App() {
 			user && localStorage.setItem('user', JSON.stringify(user));
 		},
 		[ user ]
-	);
+  );
+  
+  const getUser = currentUser => {
+		setUser(currentUser);
+	};
 
   return (
+    <UserContext.Provider value={{ user, setUser, getUser}}>
     <div className="App">
   
 
@@ -31,6 +38,7 @@ function App() {
         <PrivateRoute path="/protected/dashboard" component={Dashboard} />
 
     </div>
+    </UserContext.Provider>
   );
 }
 

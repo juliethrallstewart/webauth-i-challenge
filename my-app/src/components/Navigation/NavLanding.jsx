@@ -8,21 +8,19 @@ const NavLanding = props => {
 				<div className="nav-logo">Quote of The Day</div>
 
 				<div className="nav-links">
-					<NavLink
-              exact
-              to="/login"
-              className="nav-link"
-              activeClassName="nav-link-active"
-            >
-              Login
-            </NavLink>
-            <NavLink
-              to="/signup"
-              className="nav-link"
-              activeClassName="nav-link-active"
-            >
-              Signup
-            </NavLink>
+                <div>
+					<NavLink exact to="/login"
+                        className="nav-link"
+                        activeClassName="nav-link-active">Login
+                     
+                    </NavLink>
+                    </div>
+                    <div>
+                    <NavLink to="/signup"
+                        className="nav-link"
+                        activeClassName="nav-link-active">Signup
+                    </NavLink>
+                    </div>
 				</div>
 			</div>
 		</div>
