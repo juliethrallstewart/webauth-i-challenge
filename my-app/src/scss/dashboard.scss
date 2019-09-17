@@ -31,3 +31,31 @@
       transform: rotate(360deg);
     }
   }
+
+  .quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20%;
+    width: 90%;
+    margin: 0 auto;
+
+    .quote {
+      font-size: 2em;
+      margin-bottom: 20px;
+      font-family: $reenie;
+    }
+
+    .author {
+      font-size: 1.5em;
+      font-family: $reenie;
+
+    }
+  }
+
+//   $reenie:'Reenie Beanie', cursive;
+// $caveat:'Caveat Brush', cursive;
+// $nothing:'Nothing You Could Do', cursive;
+// $amatic:'Amatic SC', cursive;
+// $shadows:'Shadows Into Light', cursive;
+// $ruge:'Ruge Boogie', cursive;

@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
 
-        <PrivateRoute path="/protected/dashboard" component={Dashboard} />
+        <PrivateRoute path="/protected/dashboard/:id" component={Dashboard} />
 
     </div>
     </UserContext.Provider>

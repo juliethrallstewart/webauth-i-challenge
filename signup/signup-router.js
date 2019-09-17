@@ -8,10 +8,10 @@ const Signup = require('./signup-model.js');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-    let { username, password } = req.body;
+    let { username, password, lastName, firstName, email, address, phone } = req.body;
     console.log(req.body)
     const hash = bcrypt.hashSync(password, 8); // it's 2 ^ 8, not 8 rounds
-    Signup.add({ username, password: hash })
+    Signup.add({ username, password: hash, lastName, firstName, email, phone, address })
       .then(saved => {
         res.status(201).json(saved);
       })
@@ -32,14 +32,14 @@ router.post('/', (req, res) => {
   //       res.status(500).json(error);
   //     });
   // });
-//   {
-//     "username": "chrisrobin",
-//     "password": "burgers",
-// 		"lastName": "stewart",
-// 		"firstName": "chris",
-//     "email": "legacy@gmail.com",
-//     "phone": "5555555555",
-//     "address": "3315 S 12 St, tacoma, wa 98405"
-//   }
+  // {
+  //   "username": "chrisrobin",
+  //   "password": "burgers",
+	// 	"lastName": "stewart",
+	// 	"firstName": "chris",
+  //   "email": "legacy@gmail.com",
+  //   "phone": "5555555555",
+  //   "address": "3315 S 12 St, tacoma, wa 98405"
+  // }
 
 module.exports = router;

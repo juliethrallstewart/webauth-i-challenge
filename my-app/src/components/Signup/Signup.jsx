@@ -2,18 +2,20 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import UserContext from '../../contexts/UserContext';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const Signup = props => {
 	const { getUser } = useContext(UserContext);
 
 	const [ newUser, setNewUser ] = useState({
-		firstName: '',
-		lastName: '',
-		name: '',
-		email: '',
+		username: '',
 		password: '',
+		lastName: '',
+		firstName: '',
+		email: '',
 		address: '',
-		phone: ''
+		phone: '',
+		address: ''
 	});
 
 	const handleChange = e => {
@@ -23,8 +25,8 @@ const Signup = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		axios
-			.post('https://localhost:4000/api/signup', newUser)
+		axiosWithAuth()
+			.post('http://localhost:4000/api/signup', newUser)
 			.then(res => {
 				console.log(res);
 				localStorage.setItem('token', res.data.token);
@@ -49,28 +51,40 @@ const Signup = props => {
 					<div className="signup-header">
 						<h2>Sign Up</h2>
 					</div>
-							<div className="form-group">
-								<input
-									// style={{ width: '320px' }}
-									type="firstName"
-									name="firstName"
-									className="form-group"
-									placeholder="First Name"
-									onChange={handleChange}
-									value={newUser.firstName}
-								/>
-							</div>
 
-							<div className="form-group">
-								<input
-									type="lastName"
-									name="lastName"
-									className="form-group"
-									placeholder="Last Name"
-									onChange={handleChange}
-									value={newUser.lastName}
-								/>
-							</div>
+					<div className="form-group">
+						<input
+							// style={{ width: '320px' }}
+							type="username"
+							name="username"
+							className="form-group"
+							placeholder="Username"
+							onChange={handleChange}
+							value={newUser.userName}
+						/>
+					</div>
+					<div className="form-group">
+						<input
+							// style={{ width: '320px' }}
+							type="firstName"
+							name="firstName"
+							className="form-group"
+							placeholder="First Name"
+							onChange={handleChange}
+							value={newUser.firstName}
+						/>
+					</div>
+
+					<div className="form-group">
+						<input
+							type="lastName"
+							name="lastName"
+							className="form-group"
+							placeholder="Last Name"
+							onChange={handleChange}
+							value={newUser.lastName}
+						/>
+					</div>
 
 					<div className="form-group">
 						<input
@@ -110,7 +124,7 @@ const Signup = props => {
 							className="form-group"
 							placeholder="address"
 							onChange={handleChange}
-							value={newUser.username}
+							value={newUser.address}
 						/>
 					</div>
 
