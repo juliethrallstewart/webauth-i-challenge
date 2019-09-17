@@ -7,7 +7,7 @@ const Signup = require('./signup-model.js');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
     let { username, password, lastName, firstName, email, address, phone } = req.body;
     console.log(req.body)
     const hash = bcrypt.hashSync(password, 8); // it's 2 ^ 8, not 8 rounds

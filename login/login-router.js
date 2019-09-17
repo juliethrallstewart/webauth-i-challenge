@@ -7,7 +7,7 @@ const Login = require('./login-model.js');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
     let { username, password } = req.body;
     const user = req.body
     console.log(user)
