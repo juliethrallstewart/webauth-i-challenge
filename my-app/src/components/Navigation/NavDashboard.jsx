@@ -12,7 +12,7 @@ const NavDashboard = props => {
         e.preventDefault()
         e.stopPropagation()
         
-        axios
+        axiosWithAuth()
             .get('http://localhost:4000/api/users/logout')
                 .then(res => {
                     console.log(res)

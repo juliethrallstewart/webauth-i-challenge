@@ -2,34 +2,39 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import UserContext from '../../contexts/UserContext';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+// import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // axios.defaults.withCredentials = true;
+// const axiosWithAuth = () => {
+//   return axios.create({ withCredentials: true });
+// };
+
+const initialCreds = {
+	username: "",
+	password: ""
+  };
 
 const Signup = props => {
 	const { getUser } = useContext(UserContext);
 
-	const [ user, setUser ] = useState({
-		username: '',
-		password: '',
-
-	});
+	const [ creds, setCreds ] = useState(initialCreds);
 	
 
 	const handleChange = e => {
-		setUser({ ...user, [e.target.name]: e.target.value });
+		setCreds({ ...creds, [e.target.name]: e.target.value });
 		// console.log('handleChange', e.target.name, e.target.value, user);
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		axiosWithAuth()
-			.post('http://localhost:4000/api/auth/login', user)
+		axios
+			.post('http://localhost:4000/api/auth/login', creds)
 			.then(res => {
 				localStorage.setItem('token', res.data.token);
 				console.log(res)
 				localStorage.setItem('user_id', res.data.id);
-
+				getUser(creds)
+				setCreds(initialCreds)
 				const id = res.data.id;
 				(console.log(props.history))
 				props.history.push(`/protected/dashboard/${id}`);
@@ -38,12 +43,14 @@ const Signup = props => {
 			.catch(err => console.log('error in login', err));
 	};
 
-	useEffect(
-		() => {
-			getUser(user);
-		},
-		[ user ]
-	);
+	// useEffect(
+	// 	() => {
+	// 		getUser(creds);
+	// 		// setCreds(initialCreds)
+
+	// 	},
+	// 	[ creds ]
+	// );
 
 	return (
 		<>
@@ -61,7 +68,7 @@ const Signup = props => {
                             className="form-group"
                             placeholder="Username"
                             onChange={handleChange}
-                            value={user.userName}
+                            value={creds.userName}
                         />
 							</div>
                             <div className="form-group">
@@ -71,7 +78,7 @@ const Signup = props => {
 							className="form-group"
 							placeholder="Password"
 							onChange={handleChange}
-							value={user.password}
+							value={creds.password}
 						/>
 					</div>
 
