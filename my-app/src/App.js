@@ -10,8 +10,7 @@ import UserContext from './contexts/UserContext';
 
 
 import './scss/index.scss';
-
-function App() {
+function App () {
 
   const [ user, setUser ] = useState(() => (localStorage.user ? JSON.parse(localStorage.user) : null));
 

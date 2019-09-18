@@ -14,9 +14,23 @@ const LoginRouter = require('../login/login-router.js')
 
 const server = express();
 
+// server.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", req.headers.origin);
+//   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Set-Cookie");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
+
+server.use(cors({
+  credentials: true,
+  origin: (origin, callback) => {
+    callback(null, true);
+  }}))
+
 const sessionConfig = {
     name: 'chocochip', //would name the cookie session id by default
-    secret: process.env.SESSION_SECRET || 'keeo it secret keep it safe',
+    secret: process.env.SESSION_SECRET || 'keep it secret keep it safe',
     cookie: {
       maxAge: 1000 * 60 * 60,// in milliseconds
       secure: false, //true means only send cookie over https, we want this to be true in productions using process.env
@@ -36,13 +50,22 @@ const sessionConfig = {
 
   // const corsConfig  = {
   //   origin: 'http://localhost:3000',
+  //   optionsSuccessStatus: 200,
   //   credentials: true
   // }
 
 server.use(helmet());
 server.use(express.json())
-server.use(cors());
+// server.use(cors());
 // server.use(cors(corsConfig))
+
+
+// server.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http:localhost:3000"); // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
 server.use(session(sessionConfig))
 
 server.use('/api/users', UsersRouter)
