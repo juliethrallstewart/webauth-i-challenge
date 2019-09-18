@@ -24,11 +24,17 @@ const Dashboard = (props) => {
   
 
     return (
+    
+        <div className="dashboard-container">
+        <div className="greeting-container">
+        <h1 className="greeting">Welcome {user.username},</h1>
+        </div>
         <div className="quote-container">
-            <h1>Welcome {user.username}</h1>
             <h2 className="quote">{quote.body}</h2>
             <p className="author">~ {quote.author} ~</p>
         </div>
+        </div>
+        
     )
 }
 

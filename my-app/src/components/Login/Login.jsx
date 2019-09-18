@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import UserContext from '../../contexts/UserContext';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
+// axios.defaults.withCredentials = true;
+
 const Signup = props => {
 	const { getUser } = useContext(UserContext);
 
