@@ -30,7 +30,7 @@ server.use(cors({
 
 const sessionConfig = {
     name: 'chocochip', //would name the cookie session id by default
-    secret: process.env.SESSION_SECRET || 'keeo it secret keep it safe',
+    secret: process.env.SESSION_SECRET || 'keep it secret keep it safe',
     cookie: {
       maxAge: 1000 * 60 * 60,// in milliseconds
       secure: false, //true means only send cookie over https, we want this to be true in productions using process.env
