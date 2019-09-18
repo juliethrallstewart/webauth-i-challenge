@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const restricted = require('../auth/restricted-middleware.js');
+const middleware = require('../auth/restricted-middleware.js');
 
 const db = require('../data/db-config.js');
 const Signup = require('./signup-model.js');

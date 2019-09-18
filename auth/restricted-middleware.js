@@ -23,15 +23,30 @@ const Users = require('../users/users-model.js');
 //     });
 // };
 
-module.exports = (req, res, next) => {
-  console.log(req.session.user)
-  if (req.session && req.session.user) {
-    next();
+// module.exports = (req, res, next) => {
+//   console.log(req.session.user)
+//   if (req.session && req.session.user) {
+//     next();
 
-  } else {
-    res.status(401).json({message: 'you shall not pass!'})
-  }
+//   } else {
+//     res.status(401).json({message: 'you shall not pass!'})
+//   }
+// }
+
+const middleware = {
+
+  restricted: ((req, res, next) => {
+    if (req.session && req.session.user) {
+      next();
+  
+    } else {
+      res.status(401).json({message: 'you shall not pass!'})
+    }
+  }),
+
 }
+
+module.exports = middleware;
 
 function fetch() {
   const reqOptions = {
