@@ -1,0 +1,53 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 75px;
+    background-color: gray;
+
+    .nav-content {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        color: white;
+        margin: 0 20px;
+        width:100%;
+        font-size: 3em;
+        font-family: $shadows;
+
+//         $reenie:'Reenie Beanie', cursive;
+// $caveat:'Caveat Brush', cursive;
+// $nothing:'Nothing You Could Do', cursive;
+// $amatic:'Amatic SC', cursive;
+// $shadows:'Shadows Into Light', cursive;
+// $ruge:'Ruge Boogie', cursive;
+
+
+
+
+        .nav-links {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        
+
+            .nav-link {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: white;
+                margin-left: 40px;
+                text-decoration: none;
+                font-size: .75em;
+
+            }
+
+
+
+        }
+    }
+
+}

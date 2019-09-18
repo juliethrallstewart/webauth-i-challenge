@@ -1,0 +1,82 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+.dashboard-container {
+
+  width: 90%;
+  margin: 0 auto;
+
+  .greeting-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 25%;
+    width: 100%;
+
+    .greeting {
+      
+      font-family: $reenie;
+      font-size: 2em;
+    }
+  }
+
+  .quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+    width: 90%;
+    margin: 0 auto;
+
+    .quote {
+      font-size: 2em;
+      margin-bottom: 20px;
+      font-family: $reenie;
+    }
+
+    .author {
+      font-size: 1.5em;
+      font-family: $reenie;
+
+    }
+  }
+}
+//   $reenie:'Reenie Beanie', cursive;
+// $caveat:'Caveat Brush', cursive;
+// $nothing:'Nothing You Could Do', cursive;
+// $amatic:'Amatic SC', cursive;
+// $shadows:'Shadows Into Light', cursive;
+// $ruge:'Ruge Boogie', cursive;
