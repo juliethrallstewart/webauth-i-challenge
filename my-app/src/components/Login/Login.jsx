@@ -18,7 +18,7 @@ const Signup = props => {
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.name]: e.target.value });
-		console.log('handleChange', e.target.name, e.target.value, user);
+		// console.log('handleChange', e.target.name, e.target.value, user);
 	};
 
 	const handleSubmit = e => {

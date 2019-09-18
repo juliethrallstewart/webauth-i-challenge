@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import UserContext from '../../contexts/UserContext';
 import axios from 'axios'
+import NavDashboard from '../Navigation/NavDashboard'
 
 const Dashboard = (props) => {
 
@@ -24,7 +25,8 @@ const Dashboard = (props) => {
   
 
     return (
-    
+        <>
+        <NavDashboard {...props}/>
         <div className="dashboard-container">
         <div className="greeting-container">
         <h1 className="greeting">Welcome {user.username},</h1>
@@ -34,6 +36,7 @@ const Dashboard = (props) => {
             <p className="author">~ {quote.author} ~</p>
         </div>
         </div>
+        </>
         
     )
 }
